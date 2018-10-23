@@ -1,7 +1,14 @@
 import Vue from 'vue'
-import App from './App.vue'
+import CurrConv from './CurrencyConversion.vue'
+import VueResource from 'vue-resource'
+
+
+
 
 new Vue({
   el: '#app',
-  render: h => h(App)
+  render: h => h(CurrConv),
+  data:{
+    mess: "lol"
+  }
 })
