@@ -1,12 +1,9 @@
 import Vue from 'vue'
 import CurrConv from './CurrencyConversion.vue'
 import VueResource from 'vue-resource'
-import BootstrapVue from 'bootstrap-vue'
-
-Vue.use(BootstrapVue);
-
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import Vue2Filters from 'vue2-filters'
+ 
+Vue.use(Vue2Filters)
 
 
 Vue.use(VueResource)

@@ -1,13 +1,14 @@
 <template lang="pug">
-  #app.conversBar__wrapper
-    .conversBar
-      input(type="text" v-model="firstCurrency") 
-      select(v-model="firstRate")
+  #app.wrapper
+    .form
+      input(type="text" v-model="firstCurrency" autofocus) 
+      select(v-model="firstRate" class="dropdown")
+        option(v-for="(rate, index) in allRates" :value="rate" :key="index" ) {{index}}
+      span.row  🡒 
+      select( v-model="secondRate" class="dropdown") 
         option(v-for="(rate, index) in allRates" :value="rate" :key="index") {{index}}
-      
-      select( v-model="secondRate")
-        option(v-for="(rate, index) in allRates" :value="rate" :key="index") {{index}}
-      input(type="text" v-model="secondCurrency") 
+      //- input(type="text" v-model="secondCurrency") 
+      span.result  = {{firstCurrencyChange | currency('', 2) }}
 </template>
 
 
@@ -58,10 +59,10 @@ export default {
     computed:{
       firstCurrencyChange: function(){
 
-        this.firstCurrency = parseInt(this.firstCurrency, 10),
-        this.secondCurrency = parseInt(this.secondCurrency, 10),
-        this.firstRate = parseInt(this.firstRate, 10),
-        this.secondtRate = parseInt(this.secondRate, 10);
+        // this.firstCurrency = parseInt(this.firstCurrency, 10),
+        // this.secondCurrency = parseInt(this.secondCurrency, 10),
+        // this.firstRate = parseInt(this.firstRate, 10),
+        // this.secondtRate = parseInt(this.secondRate, 10);
         return (this.firstCurrency / this.firstRate * this.secondRate)
         },
     },
@@ -75,22 +76,36 @@ export default {
 </script>
 
 <style lang="stylus">
-  .conversBar__wrapper
-    font-size 30px
-    background-color #1d3444
+  body
+    background-color #edeef0
 
-  .conversBar
-    margin 0 auto
-    padding-top 100px
-    padding-bottom 100px
-    width 700px
-    text-align center
-    background-color #135684
-    
-  
+  .wrapper
+    display flex
+    flex-direction row
+    justify-content center
+  .form
+    font-size 18px
+    font-family Helvetica, sans-serif
+    background-color white
+    width 60%
+    padding 7%
+    border-radius 10px
   input 
-    width 100px
-    max-with 100px
+    font-size 18px
+    font-family Helvetica, sans-serif
+    margin-right 20px 
+    background-color #4a76a8
+    color white
+    padding 16px
+    border none
+    cursor pointer
+  .dropdown 
+    background-color #4a76a8
+    color white
+    padding 16px
+    border none
+    cursor pointer
+
 
 </style>
 
